@@ -1,0 +1,44 @@
+#registration {
+  padding: 40px 15px;
+  background: $orange-dark;
+  text-align: center;
+
+  .form-control {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .btn-default {
+    border: none;
+    padding: 10px 45px;
+    background: $black;
+    @include border-radius(30px);
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: $white;
+  }
+
+  .checkbox {
+    color: $white;
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
+
+  .title-section {
+    color: $white;
+
+    span {
+      &:before {
+        background: $orange-dark;
+        border-color: $white;
+      }
+
+      &:after {
+        background: $white;
+      }
+    }
+  }
+}

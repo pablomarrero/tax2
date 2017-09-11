@@ -1,0 +1,77 @@
+$white:          #ffffff;
+$black:          #000000;
+$orange-dark:    #d57324;
+$orange-light:   #e48d25;
+$gray-text:      #818181;
+$gray-border:    #b3b3b3;
+$gray-bg:        #494949;
+$gray-invert:    #b1b1b1;
+
+// border radius
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+       -o-border-radius: $radius;
+	        border-radius: $radius;
+}
+
+// box shadow
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $top $left $blur $color;
+       -moz-box-shadow: inset $top $left $blur $color;
+        -ms-box-shadow: inset $top $left $blur $color;
+         -o-box-shadow: inset $top $left $blur $color;
+            box-shadow: inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+       -moz-box-shadow: $top $left $blur $color;
+        -ms-box-shadow: $top $left $blur $color;
+         -o-box-shadow: $top $left $blur $color;
+            box-shadow: $top $left $blur $color;
+  }
+}
+
+// transition
+@mixin transition($property, $duration, $easing: linear) {
+	-webkit-transition: $property $duration $easing;
+	   -moz-transition: $property $duration $easing;
+      -ms-transition: $property $duration $easing;
+       -o-transition: $property $duration $easing;
+          transition: $property $duration $easing;
+}
+
+// transform
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+	   -moz-transform: $transforms;
+      -ms-transform: $transforms;
+	     -o-transform: $transforms;
+          transform: $transforms;
+}
+// rotate
+@mixin rotate($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+// scale
+@mixin scale($scale) {
+	 @include transform(scale($scale));
+}
+// translate
+@mixin translate($x, $y) {
+   @include transform(translate($x, $y));
+}
+// skew
+@mixin skew($x, $y) {
+   @include transform(skew(#{$x}deg, #{$y}deg));
+}
+//transform origin
+@mixin transform-origin ($origin) {
+  -webkit-transform-origin: $origin;
+     -moz-transform-origin: $origin;
+      -ms-transform-origin: $origin;
+	     -o-transform-origin: $origin;
+          transform-origin: $origin;
+}

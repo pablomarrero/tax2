@@ -10,7 +10,13 @@ import { AuthMethods, AuthProvider, FirebaseUIAuthConfig, FirebaseUIModule, Auth
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
+import { HeaderComponent } from './ui/header/header.component';
+import { FooterComponent } from './ui/footer/footer.component';
+import { MainComponent } from './ui/main/main.component';
+import { GeneralComponent } from './ui/general/general.component';
+import { SellerComponent } from './ui/seller/seller.component';
+import { DeliveryComponent } from './ui/delivery/delivery.component';
+import { RegistrationComponent } from './ui/registration/registration.component';
 
 const facebookCustomConfig: AuthProviderWithCustomConfig = {
   provider: AuthProvider.Facebook,
@@ -40,7 +46,14 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    MainComponent,
+    GeneralComponent,
+    SellerComponent,
+    DeliveryComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

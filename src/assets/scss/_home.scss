@@ -1,0 +1,65 @@
+#home {
+  // background: url('../images/home.jpg') no-repeat;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+
+  h2 {
+    font-size: 50px;
+    font-weight: 300;
+    color: $white;
+    margin: 0;
+
+    @media (max-width: 768px){
+      font-size: 30px;
+      font-weight: 400;
+    }
+  }
+
+  h3 {
+    font-size: 32px;
+    font-weight: 400;
+    color: $orange-light;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+
+    max-width: 750px;
+    margin: 15px auto;
+
+    @media (max-width: 768px){
+      font-size: 18px;
+    }
+  }
+
+  form {
+    margin-top: 40px;
+  }
+
+  .form-control {
+    @include border-radius(0 30px 30px 0);
+  }
+
+  .input-group-addon {
+    border: none;
+    background: $white;
+    @include border-radius(30px 0 0 30px);
+
+    color: $orange-light;
+    font-size: 18px;
+  }
+
+  .input-group {
+    margin: 10px;
+  }
+
+  .btn-default {
+    border: none;
+    padding: 10px 15px;
+    background: $orange-light;
+    @include border-radius(30px);
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: $white;
+  }
+}

@@ -24,11 +24,11 @@
       @include box-shadow(0, 0, 10px, rgba(0,0,0,0.2));
 
       &:nth-child(1){
-        background: url('../images/logo-2.jpg') no-repeat center;
+        background: url('/assets/images/logo-2.jpg') no-repeat center;
       }
 
       &:nth-child(2){
-        background: url('../images/map.jpg') no-repeat center;
+        background: url('/assets/images/map.jpg') no-repeat center;
       }
     }
   }

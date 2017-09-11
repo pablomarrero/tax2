@@ -86,12 +86,12 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="mani-menu">
+    <div class="collapse navbar-collapse" id="mani-menu">      
       <ul class="nav navbar-nav navbar-right">
-        <li><a class="btn-login" data-toggle="modal" data-target="#myModal" >Ingresar</a></li>
-        <li><a class="btn-register" href="#registration">Registrarse</a></li>
+        <li *ngIf="auth.currentUser() == null"><a class="btn-login" data-toggle="modal" data-target="#myModal" >Ingresar</a></li>
+        <li *ngIf="auth.currentUser() != null"><a class="btn-login" (click)="logout()">Salir</a></li>
+        <li *ngIf="auth.currentUser() == null"><a class="btn-register" href="#registration">Registrarse</a></li>
       </ul>
-
       <ul class="nav navbar-nav center-nav">
         <li><a href="#general">GENERAL</a></li>
         <li><a href="#seller">VENDEDOR</a></li>

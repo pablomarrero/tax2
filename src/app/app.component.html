@@ -4,17 +4,5 @@
 <app-seller></app-seller>
 <app-delivery></app-delivery>
 <app-registration></app-registration>
-
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}! {{displayUser()}}
-  </h1>
-  <img width="300" src="../assets/images/taxi-go.jpg">
-</div>
-
-<firebase-ui (signInSuccess)="successCallback($event)"></firebase-ui>
-<button (click)="logout()">Logout</button>
-
-
+<app-login></app-login>
 <app-footer></app-footer>

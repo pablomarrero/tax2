@@ -17,6 +17,8 @@ import { GeneralComponent } from './ui/general/general.component';
 import { SellerComponent } from './ui/seller/seller.component';
 import { DeliveryComponent } from './ui/delivery/delivery.component';
 import { RegistrationComponent } from './ui/registration/registration.component';
+import { LoginComponent } from './ui/login/login.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const facebookCustomConfig: AuthProviderWithCustomConfig = {
   provider: AuthProvider.Facebook,
@@ -53,9 +55,11 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
     GeneralComponent,
     SellerComponent,
     DeliveryComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    LoginComponent
   ],
   imports: [
+    NgbModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule,

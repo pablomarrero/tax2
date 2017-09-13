@@ -10,7 +10,7 @@ import { LoginComponent } from '../login/login.component';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor( private auth: AppComponent, private loginModal: LoginComponent ) { }
+  constructor( public auth: AppComponent, private loginModal: LoginComponent ) { }
 
   ngOnInit() {
   }

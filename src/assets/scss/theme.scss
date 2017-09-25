@@ -2,7 +2,8 @@
 @import 'nav';
 @import 'flex';
 @import 'home';
-@import 'general';
+@import 'about-us';
+@import 'how-works';
 @import 'seller';
 @import 'delivery';
 @import 'registration';
@@ -78,15 +79,14 @@ a {
 
     span {
       &:after  {
-        background: $gray-invert;
+        background: $white;
       }
 
       &:before {
-        border-color: $gray-invert;
+        border-color: $white;
         background-color: $gray-bg;
       }
     }
-
   }
 }
 
@@ -106,11 +106,19 @@ a {
   min-height: 100px;
   text-align: center;
 
+  &#how-pay {
+    padding-top: 120px;
+    padding-bottom: 120px
+  }
+
   h3 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 36px;
+    font-size: 32px;
     color: $white;
     font-weight: 400;
+    letter-spacing: 0.5px;
+    max-width: 992px;
+    margin: 0 auto;
 
     b {
       font-weight: 700;
@@ -121,13 +129,13 @@ a {
     }
   }
 
-  .idea-icon {
-    max-width: 100px;
+  img {
+    max-width: 150px;
+    margin-bottom: 50px;
   }
 
-  .route-icon {
-    max-width: 150px;
-    margin-bottom: 20px;
+  .wallet-icon {
+    margin-bottom: 30px;
   }
 }
 
@@ -188,19 +196,35 @@ a {
   @include transition(all, 0.2s);
 
   &:focus {
-    @include box-shadow(0, 2px, 5px, rgba(0,0,0,0.2));
+    // @include box-shadow(0, 2px, 5px, rgba(0,0,0,0.2));
+    box-shadow: none;
     outline: none;
+    border-color: $orange-dark !important;
   }
 }
 
 footer {
+  font-family: 'Montserrat', sans-serif;
   padding: 30px 15px;
   text-align: center;
-  background: $black;
+  background: #2d2d2d;
 
   h4 {
-    color: $white;
+    color: #727272;
     font-size: 14px;
+    font-weight: 400;
+
+    span {
+      color: $orange-dark;
+    }
+  }
+
+  a {
+    color: $white;
+
+    &:hover {
+      color: $white;
+    }
   }
 
   .btn-group-sm {

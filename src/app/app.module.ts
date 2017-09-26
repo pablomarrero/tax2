@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+ 
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
@@ -19,6 +21,10 @@ import { DeliveryComponent } from './ui/delivery/delivery.component';
 import { RegistrationComponent } from './ui/registration/registration.component';
 import { LoginComponent } from './ui/login/login.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { PublicComponent } from './ui/public/public.component';
+import { ErrorComponent } from './ui/error/error.component';
+import { PrivateComponent } from './ui/private/private.component';
+import { appRoutes } from './app.routes';
 
 const facebookCustomConfig: AuthProviderWithCustomConfig = {
   provider: AuthProvider.Facebook,
@@ -56,7 +62,10 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
     SellerComponent,
     DeliveryComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    PublicComponent,
+    ErrorComponent,
+    PrivateComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -65,7 +74,8 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
     HttpModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    FirebaseUIModule.forRoot(firebaseUiAuthConfig)
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

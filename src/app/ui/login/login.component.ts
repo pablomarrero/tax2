@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from '../../app.component';
+import { AuthService } from '../auth/auth.service';
 import {FirebaseUISignInSuccess} from 'firebaseui-angular';
+import { Router } from '@angular/router';
 import * as jQuery from 'jquery';
 
 @Component({
@@ -10,14 +11,15 @@ import * as jQuery from 'jquery';
 })
 export class LoginComponent implements OnInit {
 
-  constructor( private auth: AppComponent ) { }
+  constructor( private authService: AuthService, private router: Router ) { }
 
   ngOnInit() {
   }
 
   successCallback(data: FirebaseUISignInSuccess) {
     $('#closeLoginModal').click();
-    this.auth.successCallback(data);
+    this.authService.successCallback(data);
+    this.router.navigateByUrl('private');
   }
 
 }

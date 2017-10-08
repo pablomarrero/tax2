@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand svg--white" href="#home">
+      <a class="navbar-brand svg--white" href="home">
         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         width="206px" height="62px" viewBox="0 0 206 62" enable-background="new 0 0 206 62" xml:space="preserve">
           <path fill="#E48D25" d="M153.173,8.528l-4.295,4.246c-0.778,0.771-2.137,0.871-3.017,0.224c0,0-6.218-4.556-11.028-4.556
@@ -86,16 +86,27 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="mani-menu">      
+    <div class="collapse navbar-collapse" id="mani-menu">
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="auth.currentUser() == null"><a class="btn-login" data-toggle="modal" data-target="#loginModal">Ingresar</a></li>
-        <li *ngIf="auth.currentUser() != null"><a class="btn-salir" (click)="auth.logout()">Salir</a></li>
-        <li *ngIf="auth.currentUser() == null"><a class="btn-register" href="#registration">Registrarse</a></li>
+        <li *ngIf="!isAuthenticated"><a class="btn-login" data-toggle="modal" data-target="#loginModal">Ingresar</a></li>
+        <li *ngIf="isAuthenticated"><a class="btn-salir" (click)="onLogout()">Salir</a></li>
+        <li *ngIf="!isAuthenticated">
+          <button type="button" class="btn-register" data-toggle="modal" data-target="#modal-regstration">
+            Registrarse
+          </button>
+          <!-- <a class="btn-register" href="#registration">Registrarse</a> -->
+        </li>
       </ul>
       <ul class="nav navbar-nav center-nav">
-        <li><a href="#general">GENERAL</a></li>
-        <li><a href="#seller">SOLICIANTE</a></li>
-        <li><a href="#delivery">ENCARGADO DEL TRASLADO</a></li>
+        <li><a href="#about-us">QUIENES SOMOS</a></li>
+        <li><a href="#how-works">CÓMO FUNCIONA</a></li>
+        <li><a href="#how-pay">CÓMO PAGAR</a></li>
+        <li><a href="#contact">CONTACTO</a></li>
+        <li *ngIf="isAuthenticated">
+          <a class="nav-link" [routerLink]="['/private']">DATOS</a>
+        </li>
+        <!-- <li><a href="#seller">SOLICIANTE</a></li>
+        <li><a href="#delivery">ENCARGADO DEL TRASLADO</a></li> -->
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

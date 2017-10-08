@@ -1,0 +1,34 @@
+#about-us {
+  padding-top: 120px;
+  padding-bottom: 80px;
+
+  .text {
+    max-width: 992px;
+    margin: 0 auto 40px;
+  }
+
+  .logo-about {
+    width: 100%;
+    min-width: 280px;
+    height: 280px;
+    background: url('/assets/images/logo-2.jpg') no-repeat center;
+    background-color: $white;
+    @include border-radius(40px);
+    @include box-shadow(0, 0, 10px, rgba(0,0,0,0.2));
+    margin-bottom: 20px;
+  }
+
+  .text-legend {
+    font-size: 28px;
+    color: #5e5e5e;
+    letter-spacing: 0.2px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  @media (max-width: 768px){
+    height: auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}

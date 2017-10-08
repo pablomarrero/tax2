@@ -48,5 +48,64 @@
       display: block;
     }
   }
+}
 
+#contact {
+  padding-top: 120px;
+  padding-bottom: 80px;
+  background-color: #f6f6f6;
+
+  .title-section span:before {
+    background-color: #f6f6f6;
+  }
+
+  .form-control {
+    border: 1px solid #e7e7e7;
+    border-radius: 3px;
+    text-align: left;
+  }
+
+  .btn-default {
+    border: none;
+    padding: 10px 45px;
+    background: #3f3f3f;
+    @include border-radius(30px);
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: $white;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: 30px;
+      overflow: hidden;
+
+      img {
+        float: left;
+        margin-right: 15px;
+      }
+    }
+  }
+
+  p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    color: #797979;
+    letter-spacing: 0.5px;
+    font-family: 400;
+    line-height: 1;
+    padding-top: 10px;
+    margin: 0;
+
+    small {
+      font-size: 18px;
+      color: #b1b1b1;
+      font-family: 700;
+    }
+  }
 }

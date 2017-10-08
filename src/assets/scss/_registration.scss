@@ -1,11 +1,16 @@
+#registerModal {
+  font-size: 30px;
+  margin: 0 0 15px;
+}
+
 #registration {
   padding: 40px 15px;
-  background: $orange-dark;
   text-align: center;
 
   .form-control {
     max-width: 500px;
     margin: 0 auto;
+    border: 1px solid #e7e7e7;
   }
 
   .btn-default {
@@ -13,6 +18,7 @@
     padding: 10px 45px;
     background: $black;
     @include border-radius(30px);
+    margin-top: 20px;
 
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
@@ -20,7 +26,7 @@
   }
 
   .checkbox {
-    color: $white;
+    color: $gray-text;
     a {
       color: inherit;
       text-decoration: underline;

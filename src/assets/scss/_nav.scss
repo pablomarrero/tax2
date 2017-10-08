@@ -12,10 +12,12 @@ nav {
       height: 100%;
     }
 
-    &.svg--white {
-      svg {
-        * {
-          fill: $white;
+    @media (min-width: 768px) {
+      &.svg--white {
+        svg {
+          * {
+            fill: $white;
+          }
         }
       }
     }
@@ -33,11 +35,18 @@ nav {
 
     .navbar-nav {
       &.center-nav {
+        text-align: center;
+
         @media (min-width: 768px){
           float: none;
           margin: 0 auto;
           display: table;
           table-layout: fixed;
+
+          > li {
+            float: none;
+            display: inline-block;
+          }
         }
       }
 
@@ -60,29 +69,37 @@ nav {
           margin-right: 0;
         }
 
-        > li > a {
-          color: $white;
-          border: 2px solid $orange-dark;
+        > li {
+          > a {
+            color: $white;
+            border: 2px solid $orange-dark;
 
-          &.btn-login {
-            @include border-radius(30px 0 0 30px);
-            
+            &.btn-login {
+              @include border-radius(30px 0 0 30px);
+
+              &:hover {
+                background-color: darken($orange-dark, 2%);
+                border-color: darken($orange-dark, 2%);
+              }
+            }
+
+            &.btn-salir {
+              @include border-radius(30px 30px 30px 30px);
+
+              &:hover {
+                background-color: darken($orange-dark, 2%);
+                border-color: darken($orange-dark, 2%);
+              }
+            }
             &:hover {
-              background-color: darken($orange-dark, 2%);
-              border-color: darken($orange-dark, 2%);
+              text-decoration: none;
             }
           }
 
-          &.btn-salir {
-            @include border-radius(30px 30px 30px 30px);
-
-            &:hover {
-              background-color: darken($orange-dark, 2%);
-              border-color: darken($orange-dark, 2%);
-            }
-          }
-
-          &.btn-register {
+          .btn-register {
+            padding: 10px 15px;
+            color: $white;
+            border: 2px solid $orange-dark;
             background-color: $orange-dark;
             @include border-radius(0 30px 30px 0);
 
@@ -90,10 +107,6 @@ nav {
               background-color: darken($orange-dark, 2%);
               border-color: darken($orange-dark, 2%);
             }
-          }
-
-          &:hover {
-            text-decoration: none;
           }
         }
       }

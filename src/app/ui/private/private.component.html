@@ -1,3 +1,66 @@
-<p>
-  private works!
-</p>
+<div class="private">
+<app-private-menu></app-private-menu>
+<div class="main">
+  <!-- Content Here -->
+  <div class="row">
+    <div class="col-xs-12">
+      <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#client" aria-controls="client" role="tab" data-toggle="tab">Cliente</a></li>
+          <li role="presentation"><a href="#owner" aria-controls="owner" role="tab" data-toggle="tab">Dueño</a></li>
+          <li role="presentation"><a href="#driver" aria-controls="driver" role="tab" data-toggle="tab">Conductor</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="client">...</div>
+          <div role="tabpanel" class="tab-pane" id="owner">...</div>
+          <div role="tabpanel" class="tab-pane" id="driver">...</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Panel title</h3>
+        </div>
+        <div class="panel-body">
+          Panel content
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  function htmlbodyHeightUpdate() {
+    var height3 = $(window).height()
+    var height1 = $('.nav').height() + 50
+    height2 = $('.main').height()
+    if (height2 > height3) {
+      $('html').height(Math.max(height1, height3, height2) + 10);
+      $('body').height(Math.max(height1, height3, height2) + 10);
+    } else {
+      $('html').height(Math.max(height1, height3, height2));
+      $('body').height(Math.max(height1, height3, height2));
+    }
+  }
+
+  $(document).ready(function() {
+    htmlbodyHeightUpdate()
+    $(window).resize(function() {
+      htmlbodyHeightUpdate()
+    });
+    $(window).scroll(function() {
+      height2 = $('.main').height()
+      htmlbodyHeightUpdate()
+    });
+  });
+</script>
+</div>

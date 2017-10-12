@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   isAuthenticated = false;
 
-  constructor( public authService: AuthService, private loginModal: LoginComponent, private router: Router ) { }
+  constructor( public authService: AuthService , private loginModal: LoginComponent, private router: Router ) { }
 
   onLogout() {
     this.authService.logout()

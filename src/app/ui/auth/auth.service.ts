@@ -56,4 +56,13 @@ export class AuthService {
     return this.user;
   }
 
+  userId() {
+    return this.user
+    .map(
+      (user) => {
+        console.log('user id: ', user.uid);
+        return user.uid;
+      }
+    );
+  }
 }

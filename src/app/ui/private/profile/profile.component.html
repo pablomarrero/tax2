@@ -47,19 +47,19 @@
                     </div>
                   </div>
                 </fieldset>
-                <fieldset formGroupName="document">
+                <fieldset formGroupName="documentId">
                   <div class="form-group">
                     <label for="idType">Tipo de documento</label>
                     <select name="idType" formControlName="idType" class="form-control">
                         <option *ngFor="let prf of allIdTypes" [ngValue]="prf">
-                            {{ prf.description }}
+                            {{ prf }}
                         </option>
                     </select> 
                     <div class="alert alert-danger"
-                      *ngIf="basicForm.controls['document'].controls.idType.errors && 
-                            (basicForm.controls['document'].controls.idType.dirty || 
-                            basicForm.controls['document'].controls.idType.touched)">
-                      <p *ngIf="basicForm.controls['document'].controls.idType.errors.required">
+                      *ngIf="basicForm.controls['documentId'].controls.idType.errors && 
+                            (basicForm.controls['documentId'].controls.idType.dirty || 
+                            basicForm.controls['documentId'].controls.idType.touched)">
+                      <p *ngIf="basicForm.controls['documentId'].controls.idType.errors.required">
                         Por favor ingrese su documento
                       </p>
                     </div>
@@ -70,10 +70,10 @@
                             id="idNumber" 
                             placeholder="Ingrese su documento sin puntos ni guión">
                     <div class="alert alert-danger"
-                      *ngIf="basicForm.controls['document'].controls.idNumber.errors && 
-                            (basicForm.controls['document'].controls.idNumber.dirty || 
-                            basicForm.controls['document'].controls.idNumber.touched)">
-                      <p *ngIf="basicForm.controls['document'].controls.idNumber.errors.required">
+                      *ngIf="basicForm.controls['documentId'].controls.idNumber.errors && 
+                            (basicForm.controls['documentId'].controls.idNumber.dirty || 
+                            basicForm.controls['documentId'].controls.idNumber.touched)">
+                      <p *ngIf="basicForm.controls['documentId'].controls.idNumber.errors.required">
                         Por favor ingrese su documento
                       </p>
                     </div>
@@ -265,6 +265,8 @@
       </div>
     </div>
     </div>
+    <button type="button" class="btn btn-sm btn-success" (click)='saveProfile()'>Guardar</button>
   </form>
   <pre>{{basicForm.value | json}}</pre>
+  <pre>{{uid}}</pre>
 </div>

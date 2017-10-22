@@ -1,9 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FormControl, FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../../auth/auth.service';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+
+interface Car {
+  plate: string;
+  brand: string;
+  model: string;
+  year: string;
+  company: string;
+  mobileNumber: string;
+}
+interface Warehouse {
+  address: string;
+  firstCorner: string;
+  secondCorner: string;
+}
+interface Profile {
+  name: {
+    firstName: string,
+    lastName: string
+  };
+  email: string;
+  document: {
+    idType: string,
+    idNumber: string
+  };
+  contactPhone: string;
+  warehouses: Warehouse[];
+  isDriver: string;
+  driverCars: Car[];
+  isOwner: string;
+  ownerCars: Car[];
+}
 
 @Component({
   selector: 'app-profile',
@@ -12,16 +43,14 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class ProfileComponent implements OnInit {
   uid: string;
+  profileDoc: AngularFirestoreDocument<Profile>;
+  profile$: Observable<Profile>;
+
   basicForm: FormGroup;
   vendorForm: FormGroup;
-  allIdTypes = [
-    new IdTypes(1, 'C.I.'),
-    new IdTypes(2, 'RUT'),
-    new IdTypes(3, 'Pasaporte')
-  ];
-  profile: FirebaseObjectObservable<any>;
+  allIdTypes = ['C.I.', 'RUT', 'Pasaporte'];
 
-  constructor(public authService: AuthService, private fb: FormBuilder, private db: AngularFireDatabase) {
+  constructor(public authService: AuthService, private fb: FormBuilder, public afs: AngularFirestore) {
   }
 
   ngOnInit() {
@@ -38,7 +67,7 @@ export class ProfileComponent implements OnInit {
         Validators.required,
         Validators.pattern('[^ @]*@[^ @]*')
       ]],
-      document: this.fb.group({
+      documentId: this.fb.group({
         idType: ['', Validators.required],
         idNumber: ['', [
           Validators.required,
@@ -47,7 +76,7 @@ export class ProfileComponent implements OnInit {
       }),
       contactPhone: ['', [
         Validators.required,
-        Validators.pattern('^(0|[1-9][0-9]*)$')
+        Validators.pattern('^(09|[1-9]|[0-9]*)$')
       ]],
       warehouses: this.fb.array([]),
       isDriver: '',
@@ -55,6 +84,9 @@ export class ProfileComponent implements OnInit {
       isOwner: '',
       ownerCars: this.fb.array([])
     });
+    this.profileDoc = this.afs.doc<Profile>('profiles/' + this.uid);
+    this.profile$ = this.profileDoc.valueChanges();
+    console.log(this.profile$);
   }
 
   onAddVendorWarehouse () {
@@ -106,10 +138,16 @@ export class ProfileComponent implements OnInit {
     (<FormArray>this.basicForm.controls['ownerCars']).removeAt(index);
   }
 
+  saveProfile() {
+    const _profile = this.basicForm.value;
+    _profile.uid = this.uid;
+    this.profileDoc.set(_profile);
+    console.log(JSON.stringify(_profile));
+  }
 }
 
-export class IdTypes {
-  constructor(public id: number, public description: string) {
+class IdTypes {
+  constructor(public description: string) {
   }
 }
 

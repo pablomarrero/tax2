@@ -10,7 +10,7 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { AuthMethods, AuthProvider, FirebaseUIAuthConfig, FirebaseUIModule, AuthProviderWithCustomConfig } from 'firebaseui-angular';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { environment } from '../environments/environment';
 import { HeaderComponent } from './ui/public/header/header.component';
@@ -75,7 +75,7 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
     HttpModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    AngularFireDatabaseModule,
+    AngularFirestoreModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     RouterModule.forRoot(appRoutes),
     NgxErrorsModule

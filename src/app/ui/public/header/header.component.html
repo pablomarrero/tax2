@@ -89,6 +89,9 @@
     <div class="collapse navbar-collapse" id="mani-menu">
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!isAuthenticated"><a class="btn-login" data-toggle="modal" data-target="#loginModal">Ingresar</a></li>
+        <li *ngIf="isAuthenticated">
+          <a class="btn-user-loged" [routerLink]="['/private']"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+        </li>
         <li *ngIf="isAuthenticated"><a class="btn-salir" (click)="onLogout()">Salir</a></li>
         <li *ngIf="!isAuthenticated">
           <button type="button" class="btn-register" data-toggle="modal" data-target="#modal-regstration">
@@ -102,9 +105,6 @@
         <li><a href="#how-works">CÓMO FUNCIONA</a></li>
         <li><a href="#how-pay">CÓMO PAGAR</a></li>
         <li><a href="#contact">CONTACTO</a></li>
-        <li *ngIf="isAuthenticated">
-          <a class="nav-link" [routerLink]="['/private']">DATOS!!!!</a>
-        </li>
         <!-- <li><a href="#seller">SOLICIANTE</a></li>
         <li><a href="#delivery">ENCARGADO DEL TRASLADO</a></li> -->
       </ul>

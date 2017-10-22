@@ -1,31 +1,35 @@
-<div class="col-md-2">
-  <app-private-menu></app-private-menu>
-</div>
-<div class="col-md-10">
+<app-private-menu></app-private-menu>
+
+<div class="main">
   <form novalidate [formGroup]="basicForm">
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingOne">
-          <h4 class="panel-title">
-            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Datos b&aacute;sicos
-            </a>
-          </h4>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+    <div>
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs custom-tabs" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#basic-data" aria-controls="basic-data" role="tab" data-toggle="tab">Datos b&aacute;sicos</a>
+        </li>
+        <li role="presentation">
+          <a href="#chofer" aria-controls="chofer" role="tab" data-toggle="tab">Chofer</a>
+        </li>
+        <li role="presentation">
+          <a href="#owner" aria-controls="owner" role="tab" data-toggle="tab">Dueño</a>
+        </li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content custom-tabs-content">
+        <div role="tabpanel" class="tab-pane active" id="basic-data">
           <div class="panel-body">
-            <div class="panel panel-default">
+            <div class="panel">
               <div class="panel-heading">Personales</div>
               <div class="panel-body">
-                <fieldset formGroupName="name"> 
+                <fieldset formGroupName="name">
                   <div class="form-group">
                     <label for="firstName">Nombre</label>
-                    <input type="text" formControlName="firstName" class="form-control" 
-                            id="firstName"
-                            placeholder="Ingrese su nombre">
+                    <input type="text" formControlName="firstName" class="form-control" id="firstName" placeholder="Ingrese su nombre">
                     <div class="alert alert-danger"
-                      *ngIf="basicForm.controls['name'].controls.firstName.errors && 
-                            (basicForm.controls['name'].controls.firstName.dirty || 
+                      *ngIf="basicForm.controls['name'].controls.firstName.errors &&
+                            (basicForm.controls['name'].controls.firstName.dirty ||
                             basicForm.controls['name'].controls.firstName.touched)">
                       <p *ngIf="basicForm.controls['name'].controls.firstName.errors.required">
                         Por favor ingrese su nombre
@@ -34,12 +38,12 @@
                   </div>
                   <div class="form-group">
                     <label for="lastName">Apellido</label>
-                    <input type="text" formControlName="lastName" class="form-control" 
+                    <input type="text" formControlName="lastName" class="form-control"
                             id="lastName"
                             placeholder="Ingrese su apellido">
                     <div class="alert alert-danger"
-                      *ngIf="basicForm.controls['name'].controls.lastName.errors && 
-                            (basicForm.controls['name'].controls.lastName.dirty || 
+                      *ngIf="basicForm.controls['name'].controls.lastName.errors &&
+                            (basicForm.controls['name'].controls.lastName.dirty ||
                             basicForm.controls['name'].controls.lastName.touched)">
                       <p *ngIf="basicForm.controls['name'].controls.lastName.errors.required">
                         Por favor ingrese su apellido
@@ -54,7 +58,7 @@
                         <option *ngFor="let prf of allIdTypes" [ngValue]="prf">
                             {{ prf }}
                         </option>
-                    </select> 
+                    </select>
                     <div class="alert alert-danger"
                       *ngIf="basicForm.controls['documentId'].controls.idType.errors && 
                             (basicForm.controls['documentId'].controls.idType.dirty || 
@@ -66,8 +70,8 @@
                   </div>
                   <div class="form-group">
                     <label for="idNumber">Documento</label>
-                    <input type="text" formControlName="idNumber" class="form-control" 
-                            id="idNumber" 
+                    <input type="text" formControlName="idNumber" class="form-control"
+                            id="idNumber"
                             placeholder="Ingrese su documento sin puntos ni guión">
                     <div class="alert alert-danger"
                       *ngIf="basicForm.controls['documentId'].controls.idNumber.errors && 
@@ -81,12 +85,12 @@
                 </fieldset>
                 <div class="form-group">
                   <label for="email">Correo electr&oacute;nico</label>
-                  <input type="email" formControlName="email" class="form-control" 
-                          id="email" 
+                  <input type="email" formControlName="email" class="form-control"
+                          id="email"
                           placeholder="Ingrese un correo electr&oacute;nico de contacto">
                   <div class="alert alert-danger"
-                    *ngIf="basicForm.controls['email'].errors && 
-                          (basicForm.controls['email'].dirty || 
+                    *ngIf="basicForm.controls['email'].errors &&
+                          (basicForm.controls['email'].dirty ||
                           basicForm.controls['email'].touched)">
                     <p *ngIf="basicForm.controls['email'].errors.required">
                       Por favor ingrese su correo electr&oacute;nico
@@ -98,12 +102,12 @@
                 </div>
                 <div class="form-group">
                   <label for="contactPhone">Tel&eacute;fono de contacto</label>
-                  <input type="text" formControlName="contactPhone" class="form-control" 
+                  <input type="text" formControlName="contactPhone" class="form-control"
                           id="contactPhone"
                           placeholder="Ingrese su tel&eacute;fono de contacto">
                   <div class="alert alert-danger"
-                    *ngIf="basicForm.controls['contactPhone'].errors && 
-                          (basicForm.controls['contactPhone'].dirty || 
+                    *ngIf="basicForm.controls['contactPhone'].errors &&
+                          (basicForm.controls['contactPhone'].dirty ||
                           basicForm.controls['contactPhone'].touched)">
                     <p *ngIf="basicForm.controls['contactPhone'].errors.required">
                       Por favor ingrese su tel&eacute;fono de contacto
@@ -112,28 +116,28 @@
                 </div>
               </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel">
               <div class="panel-heading">Direcciones</div>
               <div class="panel-body">
                 <ul formArrayName="warehouses" class="list-group">
                   <li class="list-group-item"
-                      *ngFor="let item of basicForm.controls['warehouses'].controls; let i = index" 
+                      *ngFor="let item of basicForm.controls['warehouses'].controls; let i = index"
                       [formGroupName]="i">
                     <div class="form-group">
                       <label for="address">Direcci&oacute;n</label>
-                      <input type="text" formControlName="address" class="form-control" 
+                      <input type="text" formControlName="address" class="form-control"
                               id="address"
                               placeholder="Ingrese la direcci&oacute;n">
                     </div>
                     <div class="form-group">
                       <label for="firstCorner">Esquina</label>
-                      <input type="text" formControlName="firstCorner" class="form-control" 
+                      <input type="text" formControlName="firstCorner" class="form-control"
                               id="firstCorner"
                               placeholder="Ingrese la esquina">
                     </div>
                     <div class="form-group">
                       <label for="secondCorner">Esquina</label>
-                      <input type="text" formControlName="secondCorner" class="form-control" 
+                      <input type="text" formControlName="secondCorner" class="form-control"
                               id="secondCorner"
                               placeholder="Ingrese la esquina">
                     </div>
@@ -147,112 +151,95 @@
             </div>
           </div>
         </div>
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingTwo">
-            <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Chofer
-              </a>
-            </h4>
-          </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-            <div class="panel-body">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" formControlName="isDriver" value="">
-                  Soy chofer
-                </label>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">Coches que manejo</div>
-                <div class="panel-body">
-                  <ul formArrayName="driverCars" class="list-group">
-                    <li class="list-group-item"
-                        *ngFor="let item of basicForm.controls['driverCars'].controls; let i = index" 
-                        [formGroupName]="i">
-                      <div class="form-group">
-                        <label for="plate">Matr&iacute;cula</label>
-                        <input type="text" formControlName="plate" class="form-control" 
-                                id="plate"
-                                placeholder="Ingrese la matr&iacute;cula">
-                      </div>
-                      <div class="form-group">
-                        <label for="brand">Marca</label>
-                        <input type="text" formControlName="brand" class="form-control" 
-                                id="brand"
-                                placeholder="Ingrese la marca">
-                      </div>
-                      <div class="form-group">
-                        <label for="model">Modelo</label>
-                        <input type="text" formControlName="model" class="form-control" 
-                                id="model"
-                                placeholder="Ingrese el modelo">
-                      </div>
-                      <div class="form-group">
-                        <label for="year">A&ntilde;o</label>
-                        <input type="text" formControlName="year" class="form-control" 
-                                id="year"
-                                placeholder="Ingrese el a&ntilde;o">
-                      </div>
-                      <button type="button" title="Eliminar Coche" (click)="onRemoveDriverCar(i)">Eliminar</button>
-                    </li>
-                  </ul>
-                  <button type="button" (click)="onAddDriverCar()">
-                    Agregar un coche
-                  </button>
-                </div>
+        <div role="tabpanel" class="tab-pane" id="chofer">
+          <div class="panel-body">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" formControlName="isDriver" value="">
+                Soy chofer
+              </label>
+            </div>
+            <div class="panel">
+              <div class="panel-heading">Coches que manejo</div>
+              <div class="panel-body">
+                <ul formArrayName="driverCars" class="list-group">
+                  <li class="list-group-item"
+                      *ngFor="let item of basicForm.controls['driverCars'].controls; let i = index"
+                      [formGroupName]="i">
+                    <div class="form-group">
+                      <label for="plate">Matr&iacute;cula</label>
+                      <input type="text" formControlName="plate" class="form-control"
+                              id="plate"
+                              placeholder="Ingrese la matr&iacute;cula">
+                    </div>
+                    <div class="form-group">
+                      <label for="brand">Marca</label>
+                      <input type="text" formControlName="brand" class="form-control"
+                              id="brand"
+                              placeholder="Ingrese la marca">
+                    </div>
+                    <div class="form-group">
+                      <label for="model">Modelo</label>
+                      <input type="text" formControlName="model" class="form-control"
+                              id="model"
+                              placeholder="Ingrese el modelo">
+                    </div>
+                    <div class="form-group">
+                      <label for="year">A&ntilde;o</label>
+                      <input type="text" formControlName="year" class="form-control"
+                              id="year"
+                              placeholder="Ingrese el a&ntilde;o">
+                    </div>
+                    <button type="button" title="Eliminar Coche" (click)="onRemoveDriverCar(i)">Eliminar</button>
+                  </li>
+                </ul>
+                <button type="button" (click)="onAddDriverCar()">
+                  Agregar un coche
+                </button>
               </div>
             </div>
           </div>
         </div>
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingThree">
-            <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Dueño
-              </a>
-            </h4>
-          </div>
-          <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-            <div class="panel-body">
+        <div role="tabpanel" class="tab-pane" id="owner">
+          <div class="panel-body">
+            <div class="panel">
               <div class="checkbox">
                 <label>
                   <input type="checkbox" formControlName="isOwner" value="">
                   Soy dueño
                 </label>
               </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">Coches de mi propiedad</div>
-                <div class="panel-body">
-                  <ul formArrayName="ownerCars" class="list-group">
-                    <li class="list-group-item"
-                        *ngFor="let item of basicForm.controls['ownerCars'].controls; let i = index" 
-                        [formGroupName]="i">
-                    <div class="form-group">
-                      <label for="plate">Matr&iacute;cula</label>
-                      <input type="text" formControlName="plate" class="form-control" 
-                              id="plate"
-                              placeholder="Ingrese la matr&iacute;cula">
-                    </div>
-                    <div class="form-group">
-                      <label for="brand">Marca</label>
-                      <input type="text" formControlName="brand" class="form-control" 
-                              id="brand"
-                              placeholder="Ingrese la marca">
-                    </div>
-                    <div class="form-group">
-                      <label for="model">Modelo</label>
-                      <input type="text" formControlName="model" class="form-control" 
-                              id="model"
-                              placeholder="Ingrese el modelo">
-                    </div>
-                    <div class="form-group">
-                      <label for="year">A&ntilde;o</label>
-                      <input type="text" formControlName="year" class="form-control" 
-                              id="year"
-                              placeholder="Ingrese el a&ntilde;o">
-                    </div>
-                    <button type="button" title="Eliminar Coche" (click)="onRemoveOwnerCar(i)">Eliminar</button>
+              <div class="panel-heading">Coches de mi propiedad</div>
+              <div class="panel-body">
+                <ul formArrayName="ownerCars" class="list-group">
+                  <li class="list-group-item"
+                      *ngFor="let item of basicForm.controls['ownerCars'].controls; let i = index"
+                      [formGroupName]="i">
+                  <div class="form-group">
+                    <label for="plate">Matr&iacute;cula</label>
+                    <input type="text" formControlName="plate" class="form-control"
+                            id="plate"
+                            placeholder="Ingrese la matr&iacute;cula">
+                  </div>
+                  <div class="form-group">
+                    <label for="brand">Marca</label>
+                    <input type="text" formControlName="brand" class="form-control"
+                            id="brand"
+                            placeholder="Ingrese la marca">
+                  </div>
+                  <div class="form-group">
+                    <label for="model">Modelo</label>
+                    <input type="text" formControlName="model" class="form-control"
+                            id="model"
+                            placeholder="Ingrese el modelo">
+                  </div>
+                  <div class="form-group">
+                    <label for="year">A&ntilde;o</label>
+                    <input type="text" formControlName="year" class="form-control"
+                            id="year"
+                            placeholder="Ingrese el a&ntilde;o">
+                  </div>
+                  <button type="button" title="Eliminar Coche" (click)="onRemoveOwnerCar(i)">Eliminar</button>
                   </li>
                 </ul>
                 <button type="button" (click)="onAddOwnerCar()">
@@ -263,7 +250,6 @@
           </div>
         </div>
       </div>
-    </div>
     </div>
     <button type="button" class="btn btn-sm btn-success" (click)='saveProfile()'>Guardar</button>
   </form>

@@ -43,8 +43,8 @@ interface Profile {
 })
 export class ProfileComponent implements OnInit {
   uid: string;
-  profileDoc: AngularFirestoreDocument<Profile>;
-  profile$: Observable<Profile>;
+  profileDocument: AngularFirestoreDocument<Profile>;
+  profileObservable: Observable<Profile>;
 
   basicForm: FormGroup;
   vendorForm: FormGroup;
@@ -55,7 +55,12 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.authService.currentUser().subscribe(
-      (user) => this.uid = user.uid
+      (user) => {
+        this.uid = user.uid;
+        this.profileDocument = this.afs.doc('profiles/' + this.uid);
+        this.profileObservable = this.profileDocument.valueChanges();
+        this.profileObservable.subscribe( profile => this.basicForm.patchValue(profile));
+      }
     );
 
     this.basicForm = this.fb.group({
@@ -84,9 +89,10 @@ export class ProfileComponent implements OnInit {
       isOwner: '',
       ownerCars: this.fb.array([])
     });
-    this.profileDoc = this.afs.doc<Profile>('profiles/' + this.uid);
-    this.profile$ = this.profileDoc.valueChanges();
-    console.log(this.profile$);
+
+    this.basicForm.valueChanges.subscribe(val => {
+      this.profileDocument.update(val);
+    });
   }
 
   onAddVendorWarehouse () {
@@ -140,8 +146,9 @@ export class ProfileComponent implements OnInit {
 
   saveProfile() {
     const _profile = this.basicForm.value;
-    _profile.uid = this.uid;
-    this.profileDoc.set(_profile);
+
+    const path = `profiles/${this.uid}`;
+    this.afs.doc(path).set(_profile);
     console.log(JSON.stringify(_profile));
   }
 }

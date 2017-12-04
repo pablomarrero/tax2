@@ -1,7 +1,7 @@
 <app-private-menu></app-private-menu>
 
 <div class="main">
-  <form novalidate [formGroup]="basicForm">
+  <form novalidate [formGroup]="basicForm" >
     <div>
       <!-- Nav tabs -->
       <ul class="nav nav-tabs custom-tabs" role="tablist">
@@ -253,6 +253,4 @@
     </div>
     <button type="button" class="btn btn-sm btn-success" (click)='saveProfile()'>Guardar</button>
   </form>
-  <pre>{{basicForm.value | json}}</pre>
-  <pre>{{uid}}</pre>
 </div>
